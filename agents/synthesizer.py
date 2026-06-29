@@ -1,31 +1,25 @@
-"""
-Synthesizer Agent
-
-TODO: Implement this agent that analyzes collected sources to identify
-themes, agreements, contradictions, and gaps in the literature.
-
-Hints:
-- Define a role focused on synthesis and analysis
-- Set a goal to identify themes, consensus, debates, and gaps
-- Write a backstory emphasizing pattern recognition across sources
-- This agent primarily reasons - may not need tools
-"""
-
-from dotenv import load_dotenv
-load_dotenv()
-
 from crewai import Agent
 
-# TODO: Create the synthesizer agent
-#
-# synthesizer = Agent(
-#     role="...",
-#     goal="...",
-#     backstory="...",
-#     tools=[],
-#     verbose=True,
-#     memory=True,
-# )
 
-# Placeholder - replace with your implementation
-synthesizer = None
+def create_synthesizer() -> Agent:
+    return Agent(
+        role="Research Synthesizer & Critical Analyst",
+        goal=(
+            "Transform raw retrieved passages into a structured intellectual map: identify "
+            "recurring themes, trace lines of agreement and debate among authors, expose "
+            "open questions and gaps in the literature, and produce a thematic outline that "
+            "the Report Writer can directly convert into a literature review."
+        ),
+        backstory=(
+            "You are a senior AI researcher who has written and reviewed dozens of survey "
+            "papers. You excel at reading across multiple sources and seeing the larger "
+            "narrative: which ideas build on each other, where researchers disagree, and "
+            "what important questions remain unanswered. You do not merely summarize — "
+            "you synthesize. You group findings into coherent themes, note methodological "
+            "differences that explain conflicting results, and distinguish foundational "
+            "claims from speculative ones. You always attribute ideas to specific papers "
+            "so that your analysis is fully traceable."
+        ),
+        verbose=True,
+        allow_delegation=False,
+    )
